@@ -234,7 +234,6 @@ jobs:
               }
               });
               core.info(`${JSON.stringify(resp, null, 2)}`);
-<<<<<<< HEAD
               check_list=`${check_list}\n - Web3 Compatible Tests`;
               };
               return check_list
@@ -251,15 +250,6 @@ jobs:
           github-token: ${{ steps.generate_axon_bot_token.outputs.BOT_TOKEN }}
           script: |
             console.log(`${{ steps.escape_multiple_lines_test_inputs.outputs.result }}`);
-=======
-              }
-      - name: Post a comment about component information to PR
-        id: post_workflow_run_comment
-        uses: actions/github-script@v6
-        with:
-          github-token: ${{ steps.generate_axon_bot_token.outputs.token }}
-          script: |
->>>>>>> dc2c97a (ci: add comments when ci triggered by issue comments)
             const dispatch = {
               comment_body: `${{ github.event.comment.body }}`,
               repo: context.repo,
@@ -279,21 +269,8 @@ jobs:
             integrationTestInfo = `${integrationTestInfo}\n ${{ steps.escape_multiple_lines_test_inputs.outputs.result }}\n ### Please check ci test results later.`;
             console.log(integrationTestInfo);
                         const comment = await github.rest.issues.createComment({
-            console.log(dispatch.issue.number);
-            console.log(dispatch.repo.owner);
-            console.log(dispatch.repo.repo);
-            let integrationTestInfo = `
-            \### Running ci tests
-              
-            \### Components:
-            - prebuilds:wwww`;
-            // Add manual trigger example
-            integrationTestInfo = `${integrationTestInfo}
-            const comment = await github.rest.issues.createComment({
               issue_number: dispatch.issue.number,
               owner: dispatch.repo.owner,
               repo: dispatch.repo.repo,
               body: integrationTestInfo,
             });
-            core.info(`comment ${JSON.stringify(comment.data, null, 2)}`);
-            return comment.data.id;
