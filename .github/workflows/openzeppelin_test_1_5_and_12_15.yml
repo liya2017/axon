@@ -1,9 +1,9 @@
 name: OCT 1-5 And 12-15
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
     inputs:
       dispatch:

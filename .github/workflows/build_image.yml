@@ -1,0 +1,35 @@
+name: Build docker image
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch:
+    inputs:
+      dispatch:
+        type: string
+        description: "The tag name for docker images"
+        required: true
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    outputs:
+      output-sha: ${{ steps.escape_multiple_lines_test_inputs.outputs.result }}
+    steps:
+      - name: output tag name for image
+        id: tag_name
+        run: |
+          if [ ${{ github.event_name }} == 'push' ]; then
+            export tag_name=`echo ${{ github.ref }} | awk -F '/' '{print $3}'`
+          fi
+          if [ ${{ github.event_name }} == 'workflow_dispatch' ]; then
+            export tag_name=${{ github.event.inputs.dispatch }}
+          fi
+          echo "tag_name=$tag_name" >> $GITHUB_OUTPUT
+      - name: Git checkout
+        uses: actions/checkout@v3
+        with:
+          ref: ${{ github.ref || 'main' }}
+      - name: build and push docker image
+        run: |
+          echo "${{ github.ref }}"
+          echo ${{ steps.tag_name.outputs.tag_name }}
