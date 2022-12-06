@@ -237,4 +237,3 @@ All current metrics and usage
   </tr>
 </tbody>
 </table>
-
