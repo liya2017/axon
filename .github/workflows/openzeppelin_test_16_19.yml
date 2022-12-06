@@ -1,9 +1,9 @@
 name: OCT 16-19
 
 on:
-  push:
-    branches:
-      - main
+  # push:
+  #   branches:
+  #     - main
   workflow_dispatch:
     inputs:
       dispatch:
