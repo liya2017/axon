@@ -10,4 +10,3 @@ pub fn run(fee_allocator: impl FeeAllocate + 'static) {
     FEE_ALLOCATOR.swap(Arc::new(Box::new(fee_allocator)));
     AxonCli::init().start();
 }
-
