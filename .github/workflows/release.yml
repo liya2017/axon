@@ -56,6 +56,11 @@ jobs:
           cargo build --release --target ${{ matrix.job.target }}
           ls
           ls target
+          echo "=====ls release===="
+          ls release
+          echo "=====ls x86_64-unknown-linux-gnu===="
+          ls x86_64-unknown-linux-gnu
+
           rm -rf releases
           mkdir releases
           PKG_NAME="axon_${{ needs.version.outputs.tag }}_${REL_PKG%%.*}"
