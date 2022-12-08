@@ -56,39 +56,41 @@ jobs:
         uses: actions/checkout@v3
       - name: Add rust target
         run: rustup target add ${{ matrix.job.target }}
-      # - run: |
-      #     cargo build --release --target ${{ matrix.job.target }}
-      #     ls
-      #     echo "=====ls target===="
-      #     ls target
-      #     echo "=====ls release===="
-      #     ls target/release
-      #     echo "=====ls ${{ matrix.job.target }}===="
-      #     ls target/${{ matrix.job.target }}
-      #     echo "=====ls x86_64-unknown-linux-gnu/release===="
-      #     ls target/${{ matrix.job.target }}/release
-      #     rm -rf releases
-      #     mkdir releases
-      #     REL_PKG=${{ matrix.job.REL_PKG}}
-      #     PKG_NAME="axon_${{ needs.version.outputs.tag }}_${REL_PKG%%.*}"
-      #     mkdir "releases/$PKG_NAME"
-      #     cp "target/${{ matrix.job.target }}/release/axon" "releases/$PKG_NAME"
-      #     cp "devtools/chain/default.db-options" "releases/$PKG_NAME"
-      #     cp "devtools/chain/genesis_single_node.json" "releases/$PKG_NAME"
-      #     cp "devtools/chain/nodes/genesis_multi_nodes.json" "releases/$PKG_NAME"
-      #     cp README.md "releases/$PKG_NAME"
-      #     cp -R docs "releases/$PKG_NAME"
-      #     cp core/api/README.md "releases/$PKG_NAME/docs/rpc.md"
-      #     pushd releases
-      #     if [ "${REL_PKG#*.}" = "tar.gz" ]; then
-      #       tar -czf $PKG_NAME.tar.gz $PKG_NAME
-      #     else
-      #       zip -r $PKG_NAME.zip $PKG_NAME
-      #     fi
-      #     popd
-      #     echo "=====++++ls releases++++===="
-      #     ls "releases"
-      #     mv ${{ github.workspace }}/releases/axon_${{ needs.version.outputs.tag }}_${{ matrix.job.REL_PKG}} ${{ github.workspace }}
+      - run: |
+          cargo build --release --target ${{ matrix.job.target }}
+          ls
+          echo "=====ls target===="
+          ls target
+          echo "=====ls release===="
+          ls target/release
+          echo "=====ls ${{ matrix.job.target }}===="
+          ls target/${{ matrix.job.target }}
+          echo "=====ls x86_64-unknown-linux-gnu/release===="
+          ls target/${{ matrix.job.target }}/release
+          rm -rf releases
+          mkdir releases
+          REL_PKG=${{ matrix.job.REL_PKG}}
+          PKG_NAME="axon_${{ needs.version.outputs.tag }}_${REL_PKG%%.*}"
+          mkdir "releases/$PKG_NAME"
+          cp "target/${{ matrix.job.target }}/release/axon" "releases/$PKG_NAME"
+          cp "devtools/chain/default.db-options" "releases/$PKG_NAME"
+          cp "devtools/chain/genesis_single_node.json" "releases/$PKG_NAME"
+          cp "devtools/chain/nodes/genesis_multi_nodes.json" "releases/$PKG_NAME"
+          cp README.md "releases/$PKG_NAME"
+          cp -R docs "releases/$PKG_NAME"
+          cp core/api/README.md "releases/$PKG_NAME/docs/rpc.md"
+          pushd releases
+          if [ "${REL_PKG#*.}" = "tar.gz" ]; then
+            tar -czf $PKG_NAME.tar.gz $PKG_NAME
+          else
+            zip -r $PKG_NAME.zip $PKG_NAME
+          fi
+          popd
+          echo "=====++++ls releases++++===="
+          ls "releases"
+          mv ${{ github.workspace }}/releases/axon_${{ needs.version.outputs.tag }}_${{ matrix.job.REL_PKG}} ${{ github.workspace }}
+          echo "=====++++ls ${{ github.workspace }}++++===="
+          ls "${{ github.workspace }}"
       - name: upload-zip-file
         uses: actions/upload-artifact@v2
         with:
