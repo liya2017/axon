@@ -127,5 +127,3 @@ schema:
 .PHONY: build prod prod-test
 .PHONY: fmt test clippy doc doc-deps doc-api check stats
 .PHONY: ci info security-audit
-
-
