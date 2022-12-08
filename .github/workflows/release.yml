@@ -52,6 +52,8 @@ jobs:
         run: rustup target add ${{ matrix.job.target }}
       - run: |
           cargo build --release --target ${{ matrix.job.target }}
+          ls
+          ls target
           rm -rf releases
           mkdir releases
           PKG_NAME="axon_${{ needs.version.outputs.tag }}_${REL_PKG%%.*}"
