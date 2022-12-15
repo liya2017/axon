@@ -9,6 +9,8 @@ on:
 jobs:
   generate-changelog:
     runs-on: ubuntu-latest
+    outputs:
+      changelog: ${{ steps.changelog.outputs.changelog }}
     steps:
     - uses: actions/checkout@v3
     - name: "✏️ Generate release changelog"
@@ -27,9 +29,20 @@ jobs:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         USE_MILESTONE_TITLE: "false"
     - run: |
-        echo ${{ step.changelog.outputs.changelog }}
+        echo "${{ steps.changelog.outputs.changelog }}"
       #  cat ${{ github.workspace }}/CHANGELOG.md
       #  echo ::set-output name=CHANGELOG::$(cat ${{ github.workspace }}/CHANGELOG.md)
+  create-changelog-pr:
+    runs-on: ubuntu-latest
+    needs: generate-changelog
+    steps:
+    - uses: actions/checkout@v3
+      with: 
+        ref: main
+    - run: |
+       echo "${{ needs.generate-changelog.outputs.changelog }}" >${{ github.workspace }}/CHANGELOG.md
+       ls -al
+       cat ${{ github.workspace }}/CHANGELOG.md
     - name: Create Pull Request
       uses: peter-evans/create-pull-request@v4
       with:
