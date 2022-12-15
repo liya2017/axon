@@ -16,23 +16,11 @@ jobs:
       with:
           token: ${{ secrets.GITHUB_TOKEN }}
           headerLabel: "# 📑 Changelog"
-          breakingLabel: '### 💥 Breaking'
-          enhancementLabel: '### 🚀 Enhancements'
-          bugsLabel: '### 🐛 Bug fixes'
-          deprecatedLabel: '### ⚠️ Deprecations'
-          removedLabel: '### 🔥 Removals'
-          securityLabel: '### 🛡️ Security'
-          issuesLabel: '### 📁 Other issues'
-          prLabel: '### 📁 Other pull requests'
-          addSections: '{"documentation":{"prefix":"### 📖 Documentation","labels":["documentation"]},"tests":{"prefix":"### ✅ Testing","labels":["tests"]}}'
-          issues: true
-          issuesWoLabels: true
-          pullRequests: true
-          prWoLabels: true
+          addSections: '{"documentation":{"prefix":"### 📖 Documentation","labels":["document"]},"Features":{"prefix":"### 🚀 Features","labels":["feature"]},"Enhancement":{"prefix":"### 🚀 Enhancement","labels":["enhancement"]},"bugfix":{"prefix":"🐛 Bug Fixes","labels":["bugfix"]},"refactor":{"prefix":"### 🐛 refactor","labels":["refactor"]},"chore":{"prefix":"### 🧰 Chore","labels":["chore"]},"Otherchanges":{"prefix":"✨ Other changes","labels":[""]},"dependencies":{"prefix":"⬆️ Dependency Updates","labels":["dependencies"]},"style":{"prefix":"🌈 Style","labels":["style"]}}'
           author: true
           unreleased: true
           compareLink: true
-          stripGeneratorNotice: true
+          stripGeneratorNotice: false
           verbose: true
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
