@@ -1,12 +1,20 @@
 # 📑 Changelog
 
-## [v0](https://github.com/liya2017/axon/tree/v0) (2022-12-14)
+## [v0.1.0-alpha.2](https://github.com/liya2017/axon/tree/v0.1.0-alpha.2) (2022-12-15)
 
-[Full Changelog](https://github.com/liya2017/axon/compare/v0.1.0-alpha...v0)
+[Full Changelog](https://github.com/liya2017/axon/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
+
+## [v0.1.0-alpha.1](https://github.com/liya2017/axon/tree/v0.1.0-alpha.1) (2022-12-15)
+
+[Full Changelog](https://github.com/liya2017/axon/compare/v0.1.0-alpha...v0.1.0-alpha.1)
 
 ## [v0.1.0-alpha](https://github.com/liya2017/axon/tree/v0.1.0-alpha) (2022-12-14)
 
-[Full Changelog](https://github.com/liya2017/axon/compare/7977830ff51476e385d9b3b8bc3b1b1421d60854...v0.1.0-alpha)
+[Full Changelog](https://github.com/liya2017/axon/compare/v0...v0.1.0-alpha)
+
+## [v0](https://github.com/liya2017/axon/tree/v0) (2022-12-14)
+
+[Full Changelog](https://github.com/liya2017/axon/compare/7977830ff51476e385d9b3b8bc3b1b1421d60854...v0)
 
 **Merged pull requests:**
 
