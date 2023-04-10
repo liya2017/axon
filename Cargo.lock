@@ -1710,6 +1710,7 @@ dependencies = [
  "ethers",
  "evm",
  "futures",
+ "gmp-mpfr-sys",
  "hashbrown 0.13.2",
  "hasher",
  "lazy_static",

@@ -7,7 +7,7 @@ RUN apt-get update
 RUN apt-get install cmake clang llvm gcc -y
 RUN cd /build && cargo build --release
 
-FROM debian:bookworm-20211011-slim
+FROM linux/arm64
 WORKDIR /app
 
 RUN rm /var/lib/apt/lists/* -fv
