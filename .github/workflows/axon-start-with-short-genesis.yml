@@ -1,0 +1,17 @@
+name: Axon start test
+on:
+  push:
+    branches:
+      - ci-axon-start
+jobs:
+  build:
+    runs-on: [self-hosted]
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v3
+      - name: build docker image
+        run: |
+          echo ${{ GITHUB_WORKSPACE }}
+          docker build -t axon/axon:start-test
+
+
